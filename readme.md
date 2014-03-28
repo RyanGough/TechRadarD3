@@ -4,7 +4,7 @@ A radar visualisation in D3.
 
 At work we've been putting together a technology radar inspired by [ThoughtWorks](http://www.thoughtworks.com/radar) and an article by [Neal Ford](http://nealford.com/memeagora/2013/05/28/build_your_own_technology_radar.html). 
 
-There are a few javascript radar visualisation helpers out there but I thought it would be fun to create my own, so here it is.
+There are a few javascript radar visualisation helpers out there but I thought it would be fun to create my own. See it in action [here](http://ryangough.github.io/radar/radar.html).
 
 How To Use
 -------
