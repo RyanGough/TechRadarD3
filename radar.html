@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Technology Radar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href='radar.css' rel='stylesheet' type='text/css'>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="./radarData.js" charset="utf-8"></script>
+  <script src="./radar.js" charset="utf-8"></script>
+</head>
+<body>
+  <div id="radarContainer">
+    <div id="radarInformation">
+      <button onclick="techRadar.removeZoom()">Zoom out</button>
+      <h2 id="blipName"></h2>
+      <p id="blipDescription"></p>
+    </div>
+    <div id="radar">
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  window.onload=function(){
+    techRadar.draw(rings, sectors, blips)
+  }
+</script>
+</html>

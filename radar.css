@@ -1,0 +1,40 @@
+.tools {
+	fill: red;
+}
+.platforms {
+	fill: blue;
+}
+.languages {
+	fill: green;
+}
+.techniques {
+	fill: yellow;
+}
+.hold {
+	opacity: 0.4;
+}
+.assess {
+	opacity: 0.5;
+}
+.trial {
+	opacity: 0.6;
+}
+.adopt {
+	opacity: 0.7;
+}
+.blip {
+	fill: black;
+	stroke: white;
+	stroke-width: 1px;
+}
+path {
+	stroke: black;
+	stroke-width: 1;
+}
+#radarInformation {
+	width: 300px;
+	float: left;
+}
+#radar {
+	float: left;
+}
