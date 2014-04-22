@@ -1,4 +1,4 @@
-var techRadar = (function techRadar(){
+var radar = (function techRadar(){
 
 	// setup margins and sizes
 	var margin = {top: 20, right: 10, bottom: 20, left: 10};
@@ -53,6 +53,8 @@ var techRadar = (function techRadar(){
 	}
 
     function draw(rings, sectors, blips){
+
+    	var getRandom = new Math.seedrandom('123');
     	
     	// append svg
 	    var svg = d3.select("#radar")
@@ -73,15 +75,14 @@ var techRadar = (function techRadar(){
 
 	    // function to transform blip positions
 	    function getBlipRotateTransformString(data){
-	    	console.log()
 	    	var sectorWidth = 360 / sectors.length;
-	    	var blipAngle = (Math.random() * sectorWidth) + (data.sector * sectorWidth);
+	    	var blipAngle = (getRandom() * sectorWidth) + (data.sector * sectorWidth);
 	    	return "rotate(" + blipAngle + " " + width / 2 + " " + height / 2 + ")";
     	}
 
     	// function to calculate point distance from centre, remember svg 0,0 is top left!
     	function getBlipHeight(data){
-    		return height / 2 - ((Math.random() * ringRadius) + (data.ring * ringRadius));
+    		return height / 2 - ((getRandom() * ringRadius) + (data.ring * ringRadius));
     	}
 
     	function selectBlip(data, index){
