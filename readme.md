@@ -23,4 +23,4 @@ Blips will be randomly positioned in the relevant ring / sector based on the ran
 
 Work To Do
 -------
-This is a fairly quick hack so there is lots to improve (please feel free to submit a pull request!). As I say, it would be nice for the blips to be positioned inteligently to prevent overlaps etc. Some of the code is not really idiomatic D3 so that could stand to be cleaned up. Better drag / zoom functionality would be nice. Enhanced configurability also. As I say, lots to improve!
+This is a fairly quick hack so there is lots to improve (please feel free to submit a pull request!). As I say, it would be nice for the blips to be positioned inteligently to prevent overlaps etc. Some of the code is not really idiomatic D3 so that could stand to be cleaned up. The need to adjust the rotation of the blips so that the numbers are correctly oriented is a bit of a faff, i'm sure there is a much better way to handle that whole thing. Better drag / zoom functionality would be nice. Enhanced configurability also. As I say, lots to improve!

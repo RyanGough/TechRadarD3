@@ -54,7 +54,7 @@ var radar = (function techRadar(){
 
     function draw(rings, sectors, blips){
 
-    	var getRandom = new Math.seedrandom('123');
+    	var getRandom = new Math.seedrandom('xyz123');
     	
     	// append svg
 	    var svg = d3.select("#radar")
@@ -74,34 +74,49 @@ var radar = (function techRadar(){
 	    var ringRadius = (radius / rings.length + 1);
 
 	    // function to transform blip positions
-	    function getBlipRotateTransformString(data){
-	    	var sectorWidth = 360 / sectors.length;
-	    	var blipAngle = (getRandom() * sectorWidth) + (data.sector * sectorWidth);
-	    	return "rotate(" + blipAngle + " " + width / 2 + " " + height / 2 + ")";
-    	}
+	    function getBlipGroupRotateTransformString(data){
+	      var sectorWidth = 360 / sectors.length;
+	      var blipAngle = (getRandom() * sectorWidth) + (data.sector * sectorWidth);
+	      data.rotateAngle = blipAngle;
+	      return "rotate(" + blipAngle + " " + width / 2 + " " + height / 2 + ")";
+	    }
 
-    	// function to calculate point distance from centre, remember svg 0,0 is top left!
-    	function getBlipHeight(data){
-    		return height / 2 - ((getRandom() * ringRadius) + (data.ring * ringRadius));
-    	}
+	    // reverse blip group rotation
+	    function getReverseBlipGroupRotateTransformString(data){
+	      return "rotate(" + (360 - data.rotateAngle) + ")";
+	    }
+
+	    // function to calculate point distance from centre, remember svg 0,0 is top left!
+	    function getBlipGroupPositionTransformString(data){
+	      var blipHeight = height / 2 - ((getRandom() * ringRadius) + (data.ring * ringRadius));
+	        return "translate(" + width / 2 + "," + blipHeight + ")"
+	    }
 
     	function selectBlip(data, index){
-    		document.getElementById("blipName").innerHTML = data.name;
+    		document.getElementById("blipName").innerHTML = (index + 1) + ": " + data.name;
     		document.getElementById("blipDescription").innerHTML = data.description;
     	}
 
 		// draw points
-		container.selectAll(".blip")
-			.data(blips)
-			.enter()
-			.append("circle")
-			.attr("class", "blip")
-			.attr("cx", width / 2)
-			.attr("cy", getBlipHeight)
-			.attr("r", 5)
-			.attr("transform",  getBlipRotateTransformString)
+		var blipGroups = container.selectAll(".blip")
+			.data(blips);
+
+		blipGroups.enter()
+			.append("g")
+			.attr("transform", function(datum){return getBlipGroupRotateTransformString(datum) + " " + getBlipGroupPositionTransformString(datum) })
 			.on("mouseover", selectBlip)
 
+		blipGroups.append("circle")
+			.attr("r", 8)
+			.attr("class", "blipCircle")
+
+		blipGroups
+			.append("text")
+			.attr("text-anchor", "middle")
+			.text(function(d,i) { return "" + (i + 1); })
+			.attr("dy", "3px")
+			.attr("class", "blipText")
+			.attr("transform", function(datum){return getReverseBlipGroupRotateTransformString(datum) })
     }
 
     // public api

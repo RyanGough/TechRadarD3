@@ -1,3 +1,6 @@
+body {
+	font-family: "Open Sans", sans-serif;
+}
 .tools {
 	fill: red;
 }
@@ -22,10 +25,27 @@
 .adopt {
 	opacity: 0.7;
 }
-.blip {
-	fill: black;
-	stroke: white;
-	stroke-width: 1px;
+.blipCircle {
+  fill: white;
+  stroke: gray;
+  opacity: 1;
+}
+.blipText {
+  fill: black;
+  font-size: 10px;
+}
+.ringText {
+  fill: black;
+  font-size: 20px;
+}
+.highlightBlipCircle {
+  fill: black;
+  stroke: gray;
+  opacity: 1;
+}
+.highlightBlipText {
+  fill: white;
+  font-size: 10px;
 }
 path {
 	stroke: black;
